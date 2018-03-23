@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import api from './test/stubAPI'
 
 
     class Recipe extends React.Component {
@@ -101,7 +101,7 @@ class File extends React.Component {
                 <div className="jumbotron">
                    <Header noEntries={this.props.entries.length} />
                   <NameForm noEntries={this.props.length}/>
-                  
+                  <NameForm />
                    <RecipeList entries={this.props.entries}/>
                    <File noEntries={this.props.length}/>
 
