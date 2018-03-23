@@ -2,40 +2,18 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
- class ContactForm extends React.Component {
-      render() {
-        return (
-          <div className="container-fluid">
-            <div className="row">
-               <div className="col-sm-1" >
-                <button type="button" className="btn btn-success">Add Contact</button>
-              </div>              
-              <div className="col-sm-3" >
-                <input type="text" className="form-control" defaultValue="Enter name"/>
-              </div>
-              <div className="col-sm-3" >
-                <input type="text" className="form-control" defaultValue="Enter address"/>
-              </div>
-              <div className="col-sm-2" >
-                 <input type="text" className="form-control" defaultValue="Enter telephone"/>
-              </div>                             
-             </div>
-          </div>
-          );
 
-      }
-    }
 
-    class Contact extends React.Component {
+    class Recipe extends React.Component {
       render() {
         return (
             <div className="col" >
               <div className="panel">
                 
                 <div className="panel-body"> 
-                  <p><h3>Name:</h3>  { this.props.contact.name }</p>
-                    <p><h3>Ingredients:</h3>    { this.props.contact.ingredients }</p>
-                    <p><h3>Method:</h3>    { this.props.contact.method }</p>              
+                  <p><h3>Name:</h3>  { this.props.recipe.name }</p>
+                    <p><h3>Ingredients:</h3>    { this.props.recipe.ingredients }</p>
+                    <p><h3>Method:</h3>    { this.props.recipe.method }</p>              
                 
                 
                   <div className="btn-group btn-group-justified" role="group">
@@ -52,15 +30,15 @@ import './App.css';
         }
     }
 
-    class ContactList extends React.Component {
+    class RecipeList extends React.Component {
       render() {
-          let contactRows = this.props.contacts.map(
-                (c) => <Contact key={c.ingredients} contact={c} />
+          let recipeRows = this.props.entries.map(
+                (r) => <Recipe key={r.ingredients} recipe={r} />
           );
           return (
             <div className="container-fluid contacts">
               <div className="row">
-                 {contactRows}  
+                 {recipeRows}  
               </div>
               </div>
             ) ;
@@ -72,10 +50,11 @@ import './App.css';
  
     
 
+
    class Header extends React.Component {
       render(){
     return (
-      <header>
+      
         <div class="header">
         <h1>Cooking Corner</h1>
         <img src="chefs.jpg" />
@@ -89,17 +68,42 @@ import './App.css';
       </nav>
       </div>
 
-        </header>
+
+
+      
     );
   }
 }
+class File extends React.Component {
+      render(){
+    return (
+      
+        <div class="head">
+        <footer>
+  <p>Created by: Phil Healy</p>
+  <p>Contact information: <a href="mailto:someone@hotmail.com">
+  philhealy@myemail.com</a>.</p>
+  <a href="#Top">Click here to return to top of the page</a>
+</footer>
+      </div>
+
+
+
+      
+    );
+  }
+}
+
+
  class RecipeApp extends React.Component {
       render() {
           return (
                 <div className="jumbotron">
-                   <Header noContacts={this.props.contacts.length} />
-                  <NameForm noContacts={this.props.length}/>
-                  <ContactList contacts={this.props.contacts}  />
+                   <Header noEntries={this.props.entries.length} />
+                  <NameForm noEntries={this.props.length}/>
+                  
+                   <RecipeList entries={this.props.entries}/>
+                   <File noEntries={this.props.length}/>
 
                 </div>
                  );
@@ -131,18 +135,20 @@ class NameForm extends React.Component {
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
         <label>
-          Ingredients:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          Ingredients:   
+             <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
         <label>
           Method:
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Submit" />
+        <button onClickC="submit()" >Submit </button>
+        <button onClick="clear()">Clear</button>
       </form>
     );
   }
 }
+
 
 
 

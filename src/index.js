@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 
 
-    let contacts = [
+    let entries = [
         { name: 'Carbonara',
     ingredients: 'Pasta, Cheese, Eggs, Bacon, Philidelphia Cheese',
     method: 'Boil pasta, mix ingredients. Bake in oven'
@@ -26,6 +26,6 @@ import registerServiceWorker from './registerServiceWorker';
    
 
 
-ReactDOM.render(<RecipeApp contacts={contacts}/>, document.getElementById('root'));
+ReactDOM.render(<RecipeApp entries={entries}/>, document.getElementById('root'));
 registerServiceWorker();
 
