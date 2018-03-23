@@ -29,23 +29,22 @@ import './App.css';
     class Contact extends React.Component {
       render() {
         return (
-            <div className="col-sm-3" >
-              <div className="panel panel-primary">
+            <div className="col" >
+              <div className="panel">
                 
                 <div className="panel-body"> 
-                  <p>Name:  { this.props.contact.name }</p>
-                    <p>Ingredients:    { this.props.contact.ingredients }</p>
-                    <p>Method:    { this.props.contact.method }</p>              
-                </div>
-                <div className="panel-footer"> 
-                  <div className="btn-group btn-group-justified" role="group" aria-label="...">
+                  <p><h3>Name:</h3>  { this.props.contact.name }</p>
+                    <p><h3>Ingredients:</h3>    { this.props.contact.ingredients }</p>
+                    <p><h3>Method:</h3>    { this.props.contact.method }</p>              
+                
+                
+                  <div className="btn-group btn-group-justified" role="group">
                       <div className="btn-group" role="group">
-                        <button type="button" className="btn btn-default">Edit</button>
+                        <button type="button" className="btn btn-default">Modify</button>
+                      <button type="button" className="btn btn-danger">Delete</button>
+                    </div>
                       </div>
-                      <div className="btn-group" role="group">
-                        <button type="button" className="btn btn-danger">Delete</button>
-                      </div>
-                  </div>                     
+                                     
                 </div>          
               </div>
             </div>
@@ -99,16 +98,51 @@ import './App.css';
           return (
                 <div className="jumbotron">
                    <Header noContacts={this.props.contacts.length} />
-                  
-                   <ContactList contacts={this.props.contacts}  />
+                  <NameForm noContacts={this.props.length}/>
+                  <ContactList contacts={this.props.contacts}  />
+
                 </div>
-
-    
-
-          );
+                 );
       }
     }
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
 
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('Thanks for entering a new Recipe: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label class="form">
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <label>
+          Ingredients:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <label>
+          Method:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
 
 
 

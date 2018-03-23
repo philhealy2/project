@@ -17,7 +17,7 @@ html{
 
 
 
-.App {
+/*.App {
   text-align: center;
 }
 
@@ -40,7 +40,7 @@ html{
 .App-intro {
   font-size: large;
 }
-
+*/
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -121,7 +121,53 @@ html{
   background-color: grey;
 
 }
-.panel-body{
-  color:white;
+.panel-body {
+  color:Green;
+  background-color: white;
   font-size: 1em;
+  font-family: 'lato',sans-serif;
+  border-style: solid;
+  text-align: center;
+  width: 50%;
+  margin-right:auto;
+  margin-left: auto;
+  padding:1em;
+  margin-bottom: 1em;
+  margin-top:1em;
+
+}
+
+.panel-body h3{
+  text-decoration: underline;
+  font-weight: bold;
+  font-family: 'Ubuntu',sans-serif;
+ 
+  text-align: center;}
+
+button {
+  width: 90px;
+  height: 30px;
+  font-size: 0.8em;
+  color: white;
+  background-color: #d6425d;
+  font-weight: Bold;
+  cursor: pointer;
+  margin: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #DDD;
+  border-radius: 5px;
+}
+
+button:hover{
+  color:Blue;
+}
+
+.delete-btn {
+  background-color: #D9534F;
+  border-color: #D43F3A;
+}
+
+.Form input{
+  font-size: 2em;
 }
