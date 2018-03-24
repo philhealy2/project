@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import RecipeApp from './App';
 import registerServiceWorker from './registerServiceWorker';
-   import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
 
 
 

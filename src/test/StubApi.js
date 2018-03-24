@@ -1,5 +1,6 @@
 import _ from 'lodash';
 
+
     class StubAPI {
 
         constructor() {
