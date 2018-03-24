@@ -15,7 +15,17 @@ class Recipe extends React.Component {
         };
 
         handleEdit = () =>  this.setState({ status : 'edit'} );
-          handleSave = (e) =>  null ;  // Complete later in this lab                           
+        handleSave = (e) => {e.preventDefault();
+        let name = this.state.name.trim();
+        let ingredients = this.state.ingredients.trim();
+        let method = this.state.method.trim();
+        if (!name || !ingredients || !method) {
+           return;
+        }
+        this.setState({status : ''} )
+        this.props.updateHandler(this.props.contact.method,
+              name, ingredients, method);
+      };                               
           handleCancel = () => {
               this.setState({ status : '', 
                     name: this.props.recipe.name,
@@ -57,21 +67,21 @@ class Recipe extends React.Component {
                }    
               return (
                 <div className="col-sm-3" >
-                  <div className="panel panel-primary">
+                  <div className="panel-body">
                       
                         <div className="panel-body"> 
                           {fields}            
                         </div>
                         <div className="panel-footer"> 
                           <div className="btn-group btn-group-justified" role="group" aria-label="...">
-                              <div className="btn-group" role="group">
+                              <div className="button" role="group">
                                 <button type="button" 
                                      className={'btn ' + activeButtons.leftButtonColor} 
                                       onClick={leftButtonHandler} >
                                      {activeButtons.leftButtonVal}
                                 </button>
                               </div>
-                              <div className="btn-group" role="group">
+                              <div className="button" role="group">
                                <button type="button" 
                                      className={'btn ' + activeButtons.rightButtonColor} 
                                       onClick={rightButtonHandler} >
@@ -150,16 +160,20 @@ class File extends React.Component {
 
 
  class RecipeApp extends React.Component {
+  updateRecipe = (key, n, i, m) => {
+    api.update(key,n,i,m);
+    this.setState({});
+  }
       render() {
         let entries = api.getAll();
           return (
                 <div className="jumbotron">
                    <Header noEntries={this.props.entries.length} />
                   <NameForm />
-                   <RecipeList entries={this.props.entries}/>
+                   <RecipeList entries={entries}
+                   updateHandler={this.updateRecipe}/>
                    <File noEntries={this.props.length}/>
-
-                </div>
+                   </div>
                  );
       }
     }
