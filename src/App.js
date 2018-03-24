@@ -1,52 +1,90 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import api from './test/StubApi.js'
+import api from './test/StubApi.js';
+import buttons from './config/buttonsConfig';
 
 
-    class Recipe extends React.Component {
+
+class Recipe extends React.Component {
+        state = {
+          status : '',
+          name: this.props.recipe.name,
+          ingredients: this.props.recipe.ingredients,
+          method: this.props.recipe.method
+        };
+
+        handleEdit = () =>  this.setState({ status : 'edit'} );
+          handleSave = (e) =>  null ;  // Complete later in this lab                           
+          handleCancel = () => {
+              this.setState({ status : '', 
+                    name: this.props.recipe.name,
+                    ingredients: this.props.recipe.ingredients,
+                    method: this.props.contact.method} ) ;
+          };                
+          handleNameChange = (e) =>  this.setState({name: e.target.value});
+
+          handleAddressChange = (e) => this.setState({ingredients: e.target.value});  
+          handlePhoneNumChange = (e) =>  
+                   this.setState({method: e.target.value});
+
       render() {
-        return (
-            <div className="col" >
-              <div className="panel">
-                
-                <div className="panel-body"> 
-                  <p><h3>Name:</h3>  { this.props.recipe.name }</p>
-                    <p><h3>Ingredients:</h3>    { this.props.recipe.ingredients }</p>
-                    <p><h3>Method:</h3>    { this.props.recipe.method }</p>              
-                
-                
-                  <div className="btn-group btn-group-justified" role="group">
-                      <div className="btn-group" role="group">
-                        <button type="button" className="btn btn-default">Modify</button>
-                      <button type="button" className="btn btn-danger">Delete</button>
+      
+             let activeButtons = buttons.normal ;
+             let leftButtonHandler = this.handleEdit ;
+             let rightButtonHandler = null ;
+             let fields = [
+                     <p key={'name'}>{this.state.name}</p>,
+                     <p key={'ingredients'} >{this.state.ingredients}</p>,
+                     <p key={'method'} >{this.state.method}</p>,
+                    ] ;
+
+                if (this.state.status === 'edit' ) {
+                   activeButtons = buttons.edit ;
+                   leftButtonHandler = this.handleSave;
+                   rightButtonHandler = this.handleCancel ;
+                   fields = [
+                      <input type="text" className="form-control"
+                         value={this.state.name}
+                         onChange={this.handleNameChange} />,
+                      <input type="text" className="form-control"
+                         value={this.state.ingredients}
+                         onChange={this.handleIngredientsChange} />,
+                      <input type="text" className="form-control"
+                         value={this.state.method}
+                         onChange={this.handleMethodChange} />
+                   ] ;
+               }    
+              return (
+                <div className="col-sm-3" >
+                  <div className="panel panel-primary">
+                      
+                        <div className="panel-body"> 
+                          {fields}            
+                        </div>
+                        <div className="panel-footer"> 
+                          <div className="btn-group btn-group-justified" role="group" aria-label="...">
+                              <div className="btn-group" role="group">
+                                <button type="button" 
+                                     className={'btn ' + activeButtons.leftButtonColor} 
+                                      onClick={leftButtonHandler} >
+                                     {activeButtons.leftButtonVal}
+                                </button>
+                              </div>
+                              <div className="btn-group" role="group">
+                               <button type="button" 
+                                     className={'btn ' + activeButtons.rightButtonColor} 
+                                      onClick={rightButtonHandler} >
+                                     {activeButtons.rightButtonVal}
+                                </button>  
+                              </div>
+                          </div>                     
+                        </div>          
                     </div>
-                      </div>
-                                     
-                </div>          
-              </div>
-            </div>
-            ) ;
-        }
+                    </div>
+                   ) ; 
+          }
     }
-
-    class RecipeList extends React.Component {
-      render() {
-          let recipeRows = this.props.entries.map(
-                (r) => <Recipe key={r.ingredients} recipe={r} />
-          );
-          return (
-            <div className="container-fluid contacts">
-              <div className="row">
-                 {recipeRows}  
-              </div>
-              </div>
-            ) ;
-        }
-    }
-
-   
-
  
     
 
@@ -74,6 +112,22 @@ import api from './test/StubApi.js'
     );
   }
 }
+
+ class RecipeList extends React.Component {
+      render() {
+          let recipeRows = this.props.entries.map(
+                (r) => <Recipe key={r.method} recipe={r}
+                updateHandler={this.props.updateHandler} />
+          );
+          return (
+            <div className="container-fluid contacts">
+              <div className="row">
+                 {recipeRows}  
+              </div>
+              </div>
+            ) ;
+        }
+    }
 class File extends React.Component {
       render(){
     return (
