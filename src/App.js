@@ -25,7 +25,16 @@ class Recipe extends React.Component {
         this.setState({status : ''} )
         this.props.updateHandler(this.props.recipe.method,
               name, ingredients, method);
-      };                               
+      };        
+       handleDelete = (e) => {e.preventDefault();
+        let name = "";
+        let ingredients = "";
+        let method = "";
+      
+        this.setState({status : ''} )
+        this.props.updateHandler(this.props.recipe.method,
+              name, ingredients, method);
+      };                                
           handleCancel = () => {
               this.setState({ status : '', 
                     name: this.props.recipe.name,
@@ -42,11 +51,11 @@ class Recipe extends React.Component {
       
              let activeButtons = buttons.normal ;
              let leftButtonHandler = this.handleEdit ;
-             let rightButtonHandler = null ;
+             let rightButtonHandler = this.handleDelete ;
              let fields = [
-                     <p key={'name'}>{this.state.name}</p>,
-                     <p key={'ingredients'} >{this.state.ingredients}</p>,
-                     <p key={'method'} >{this.state.method}</p>,
+                     <p key={'name'}>Name: {this.state.name}</p>,
+                     <p key={'ingredients'}>Ingredients:  {this.state.ingredients}</p>,
+                     <p key={'method'} >Method:  {this.state.method}</p>,
                     ] ;
 
                 if (this.state.status === 'edit' ) {
@@ -109,7 +118,7 @@ class Recipe extends React.Component {
        <nav id="bar">
         <ul>
          <li><a href= "App.js"> Home </a></li>
-            <li><a href= "./info/initial-entries.js"> Recipes </a></li>
+            
             <li><a href= "./elements/add.js"> Add New</a></li>
             <li><a href= "./component/task.js"> Shopping List </a></li>
         </ul>    
@@ -160,8 +169,8 @@ class File extends React.Component {
 
 
  class RecipeApp extends React.Component {
-  addRecipe = (n, i, m) => {
-           api.add(n,i,m) ;
+  addRecipe = (key, n, i, m) => {
+           api.add(key, n,i,m) ;
            this.setState({});
         };
   updateRecipe = (key, n, i, m) => {
@@ -192,7 +201,7 @@ class NameForm extends React.Component {
            
            this.props.addHandler(name,ingredients,method);
            this.setState({name: '', ingredients: '', method: ''});
-           alert('Thanks for entering a new Recipe: ' + this.state.value);
+           alert('Thanks for entering a new Recipe: ' +name);
             e.preventDefault();
         }
 
@@ -218,8 +227,8 @@ class NameForm extends React.Component {
               <div className="col-sm-3" >
                  <input type="text" className="form-control"
                       placeholder="Ingredients"
-                      value={this.state.Ingredients}
-                      onChange={this.handleIngredientdChange}
+                      value={this.state.ingredients}
+                      onChange={this.handleIngredientsChange}
                  />
                </div>
               <div className="col-sm-2" >
@@ -241,50 +250,4 @@ class NameForm extends React.Component {
 
 
 export default RecipeApp;
-
-
-
-  //*constructor(props) {
-//     super(props);
-//     this.state = {value: ''};
-
-//     this.handleChange = this.handleChange.bind(this);
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-
-//   handleChange(event) {
-//     this.setState({value: event.target.value});
-//   }
-
-//   handleSubmit(event) {
-//     alert('Thanks for entering a new Recipe: ' + this.state.value);
-//     event.preventDefault();
-//   }
-
-//   render() {
-//     return (
-//       <form onSubmit={this.handleSubmit}>
-//         <label class="form">
-//           Name:
-//           <input type="text" value={this.state.value} onChange={this.handleChange} />
-//         </label>
-//         <label>
-//           Ingredients:   
-//              <input type="text" value={this.state.value} onChange={this.handleChange} />
-//         </label>
-//         <label>
-//           Method:
-//           <input type="text" value={this.state.value} onChange={this.handleChange} />
-//         </label>
-//         <button onClickC="submit()" >Submit </button>
-//         <button onClick="clear()">Clear</button>
-//       </form>
-//     );
-//   }
-// }
-
-
-
-
-
 

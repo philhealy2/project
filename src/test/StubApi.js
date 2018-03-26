@@ -30,6 +30,9 @@ import _ from 'lodash';
             );
             return elements; 
         }
+
+       
+
         getAll() {
             return this.entries ;
         }
@@ -37,7 +40,7 @@ import _ from 'lodash';
         add(n,i,m) {
             let len = this.entries.length ;
             let newLen = this.entries.push({
-                name: n, ingredients : i, method: m }) ;
+                name: n, ingredients: i, method: m }) ;
             return newLen > len ;
         }
 
