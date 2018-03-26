@@ -49,9 +49,33 @@ class App extends Component{
   render(){
     return(
       
-      <div>
-      <header id="head">
-      <h1>Shopping List</h1></header>
+      <div id="wrapper">
+ 
+      <h1 id="head">Shopping List</h1>
+      
+        <header id="menuToggle">
+        <nav role='navigation'>
+    
+        <input type ='checkbox'/>
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+            <li class='active'><a href= '/~pth2/cgi-bin/lab7/index.html'>Home</a></li>
+            <li><a href= "/~pth2/cgi-bin/lab7/fixtures.py">Fixtures</a></li>
+            <li><a href= "/~pth2/cgi-bin/lab7/athlete.py">Event Look up</a></li>
+    
+            <li><a href='/~pth2/cgi-bin/lab7/club_search.py'>Clubs</a></li>
+            <li><a href='/~pth2/cgi-bin/lab7/shop.py'>Merchandise</a></li>
+            <li><a href='/~pth2/cgi-bin/lab7/logout.py'>Logout</a></li>
+        </ul>
+      
+    
+      </nav>
+        
+   
+        </header>
+
     
       
       <div className="body">
