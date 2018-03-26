@@ -23,19 +23,19 @@ class Recipe extends React.Component {
            return;
         }
         this.setState({status : ''} )
-        this.props.updateHandler(this.props.contact.method,
+        this.props.updateHandler(this.props.recipe.method,
               name, ingredients, method);
       };                               
           handleCancel = () => {
               this.setState({ status : '', 
                     name: this.props.recipe.name,
                     ingredients: this.props.recipe.ingredients,
-                    method: this.props.contact.method} ) ;
+                    method: this.props.recipe.method} ) ;
           };                
           handleNameChange = (e) =>  this.setState({name: e.target.value});
 
-          handleAddressChange = (e) => this.setState({ingredients: e.target.value});  
-          handlePhoneNumChange = (e) =>  
+          handleIngredientsChange = (e) => this.setState({ingredients: e.target.value});  
+          handleMethodChange = (e) =>  
                    this.setState({method: e.target.value});
 
       render() {
@@ -111,7 +111,7 @@ class Recipe extends React.Component {
          <li><a href= "App.js"> Home </a></li>
             <li><a href= "./info/initial-entries.js"> Recipes </a></li>
             <li><a href= "./elements/add.js"> Add New</a></li>
-            <li><a href= "shoplist.js"> Shopping List </a></li>
+            <li><a href= "./component/task.js"> Shopping List </a></li>
         </ul>    
       </nav>
       </div>
@@ -160,6 +160,10 @@ class File extends React.Component {
 
 
  class RecipeApp extends React.Component {
+  addRecipe = (n, i, m) => {
+           api.add(n,i,m) ;
+           this.setState({});
+        };
   updateRecipe = (key, n, i, m) => {
     api.update(key,n,i,m);
     this.setState({});
@@ -169,7 +173,7 @@ class File extends React.Component {
           return (
                 <div className="jumbotron">
                    <Header noEntries={this.props.entries.length} />
-                  <NameForm />
+                  <NameForm addHandler={this.addRecipe}/>
                    <RecipeList entries={entries}
                    updateHandler={this.updateRecipe}/>
                    <File noEntries={this.props.length}/>
@@ -178,47 +182,109 @@ class File extends React.Component {
       }
     }
 class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
+   state = { name: '', ingredients: '', method : ''};
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+     handleSubmit = (e) => {
+           e.preventDefault();
+           let name = this.state.name.trim();
+           let ingredients = this.state.ingredients.trim();
+           let method = this.state.method.trim();
+           
+           this.props.addHandler(name,ingredients,method);
+           this.setState({name: '', ingredients: '', method: ''});
+           alert('Thanks for entering a new Recipe: ' + this.state.value);
+            e.preventDefault();
+        }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
+        handleNameChange = (e) =>  this.setState({name: e.target.value});
 
-  handleSubmit(event) {
-    alert('Thanks for entering a new Recipe: ' + this.state.value);
-    event.preventDefault();
-  }
+        handleIngredientsChange = (e) => this.setState({ingredients: e.target.value});
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label class="form">
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <label>
-          Ingredients:   
-             <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <label>
-          Method:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <button onClickC="submit()" >Submit </button>
-        <button onClick="clear()">Clear</button>
-      </form>
-    );
-  }
-}
+        handleMethodChange = (e) =>  this.setState({method: e.target.value});
 
 
+        render() {
+        return (
+          <div className="container-fluid">
+            <div className="row">
+                           
+              <div className="col-sm-3" >
+                 <input type="text" className="form-control" 
+                      placeholder="Name"
+                      value={this.state.name}
+                      onChange={this.handleNameChange}
+                 />
+              </div>
+              <div className="col-sm-3" >
+                 <input type="text" className="form-control"
+                      placeholder="Ingredients"
+                      value={this.state.Ingredients}
+                      onChange={this.handleIngredientdChange}
+                 />
+               </div>
+              <div className="col-sm-2" >
+                 <input type="text" className="form-control" 
+                      placeholder="Method"
+                      value={this.state.method}
+                      onChange={this.handleMethodChange}
+                 />
+              </div>    
+              <div className="col-sm-2" >
+                <button type="button" className="btn btn-success" onClick={this.handleSubmit}>Add New Recipe</button>
+              </div>                         
+             </div>
+          </div>
+          );
 
+      }
+    }
 
 
 export default RecipeApp;
+
+
+
+  //*constructor(props) {
+//     super(props);
+//     this.state = {value: ''};
+
+//     this.handleChange = this.handleChange.bind(this);
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   }
+
+//   handleChange(event) {
+//     this.setState({value: event.target.value});
+//   }
+
+//   handleSubmit(event) {
+//     alert('Thanks for entering a new Recipe: ' + this.state.value);
+//     event.preventDefault();
+//   }
+
+//   render() {
+//     return (
+//       <form onSubmit={this.handleSubmit}>
+//         <label class="form">
+//           Name:
+//           <input type="text" value={this.state.value} onChange={this.handleChange} />
+//         </label>
+//         <label>
+//           Ingredients:   
+//              <input type="text" value={this.state.value} onChange={this.handleChange} />
+//         </label>
+//         <label>
+//           Method:
+//           <input type="text" value={this.state.value} onChange={this.handleChange} />
+//         </label>
+//         <button onClickC="submit()" >Submit </button>
+//         <button onClick="clear()">Clear</button>
+//       </form>
+//     );
+//   }
+// }
+
+
+
+
+
+
