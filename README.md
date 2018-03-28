@@ -97,8 +97,8 @@ The app has a simple 2 page design
 >Add recipe - which allows for viewing and editing existing recipes
 >Shopping list - which allows the user to make and persist a shopping list (Note I would have implemented an additional entity for this given the time)
 
-![image4](shopping.png)
-![image5](shoppingremove.png)
+![image4](shopping.PNG)
+![image5](shoppingremove.PNG)
 
 
 
