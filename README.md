@@ -28,13 +28,13 @@ an alert will pop up thanking you for entering the recipe with the name outlined
 
  List of user features (excluding user registration and authentication) . . . . 
  
-> Insert input form -add new recipe
-> Footer navigation - to the top of the page
-> Edit feature - Edit and update aspects of the recipe 
-> Delete - Remove a recipe from the list
-> Shopping list - create a shopping list of items required for the users choice
-> Remove - Independently remove each of the items from the shopping list 
-> Implemented a server side version using Mongo db and primed the recipe Entity with test data
++ Insert input form -add new recipe
++ Footer navigation - to the top of the page
++ Edit feature - Edit and update aspects of the recipe 
++ Delete - Remove a recipe from the list
++ Shopping list - create a shopping list of items required for the users choice
++ Remove - Independently remove each of the items from the shopping list 
++ Implemented a server side version using Mongo db and primed the recipe Entity with test data
 
 Code layout:
 +my-app
@@ -90,7 +90,7 @@ Given more time I would modified my client app to call via a REST api get servic
 
 Below is a high level over of my app components
 
-![image2](Components.JPG)
+![image2](Components.jpg)
 ![image3](Network diagram.JPG)
 
 ## UI Design.
