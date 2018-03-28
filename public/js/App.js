@@ -110,7 +110,40 @@ class Recipe extends React.Component {
           }
     }
  
+    class Form extends React.Component{
+      render(){
+        return(
+        <div class="container">
+  
+  <button type="button" class="btn" onClick= ".test/NameForm.js;">Add a New Recipe</button>
+  </div>);
+      }
     
+}
+
+   class Header extends React.Component {
+      render(){
+    return (
+      
+        <div class="header">
+        <h1>Cooking Corner</h1>
+        <img src="chefs.jpg" />
+       <nav id="bar">
+        <ul>
+         <li><a href= "App.js"> Home </a></li>
+            
+            <li><a href= "./elements/add.js"> Add New</a></li>
+            <li><a href= "./component/shoplist/src/App.js"> Shopping List </a></li>
+        </ul>    
+      </nav>
+      </div>
+
+
+
+      
+    );
+  }
+}
 
  class RecipeList extends React.Component {
       render() {
@@ -127,8 +160,6 @@ class Recipe extends React.Component {
             ) ;
         }
     }
-
-    
 class File extends React.Component {
       render(){
     return (
@@ -165,12 +196,12 @@ class File extends React.Component {
                 <div className="jumbotron">
                 
                 
-                   
-                  
+                   <Header noEntries={this.props.entries.length} />
+                   <Form noEntries={this.props.entries.length}/>
                   <NameForm addHandler={this.addRecipe}/>
                    <RecipeList entries={entries}
                    updateHandler={this.updateRecipe}/>
-              
+                   <File noEntries={this.props.length}/>
                    </div>
                  );
       }

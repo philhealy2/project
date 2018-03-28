@@ -14,6 +14,59 @@ html{
 }
 
 
+.output{
+  font-size:1.5em;
+  border-style: solid;
+  border-style: solid;
+    border-width: 0.2px;
+    margin:0.5em;
+    
+    background: grey;
+    border-radius: 1em;
+    height:25%;
+
+  border-width: 0.2em;
+  
+  border-style: solid;
+  border-color: white;
+  width:50%;
+  margin-right:auto;
+  margin-left: auto;
+  background-color: white;
+
+}
+.row h2{
+  color:Grey;
+  font-size:1.5em;
+  text-align: center;
+  font-family: 'Kalam', sans-serif;
+  text-decoration: underline;
+}
+.out button{
+  width: 60%;
+  font-size:0.8em;
+ margin-left:130px;
+ border-radius: 30px;
+
+ background-color: #f442b9;
+}
+input{
+width:40%;
+  margin-left: 180px;
+  border-radius: 30px;
+  border-color: grey;
+}
+
+input[type=text]
+ {
+
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 60%;
+}
 
 
 
@@ -126,7 +179,6 @@ input{
 }
 #bar li{
   display: inline;
-  padding:em;
   text-align:center;
   margin-left: auto;
   margin-right: auto;
@@ -143,9 +195,10 @@ input{
   font-weight: bold;
   font-family: "lato",sans-serif;
   font-size: 25px;
-  padding:3em;
-  margin-right: auto;
-  margin-left: auto;
+  padding:0em;
+  margin-right: 250px;
+  margin-left: 250px;
+  width:100%;
 
 }
 

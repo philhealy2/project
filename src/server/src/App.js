@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import api from './test/StubApi.js';
 import buttons from './config/buttonsConfig';
-import localCache from './localCache';
 
-import { Link } from 'react-router-dom';
-var request = require('superagent') ;
-
-
-
+ 
 
 class Recipe extends React.Component {
         state = {
@@ -52,7 +45,7 @@ class Recipe extends React.Component {
           handleMethodChange = (e) =>  
                    this.setState({method: e.target.value});
 
-      render()  {
+      render() {
       
              let activeButtons = buttons.normal ;
              let leftButtonHandler = this.handleEdit ;
@@ -112,6 +105,31 @@ class Recipe extends React.Component {
  
     
 
+
+   class Header extends React.Component {
+      render(){
+    return (
+      
+        <div class="header">
+        <h1>Cooking Corner</h1>
+        <img src="chefs.jpg" />
+       <nav id="bar">
+        <ul>
+         <li><a href= "App.js"> Home </a></li>
+            
+            <li><a href= "./elements/add.js"> Add New</a></li>
+            <li><a href= "./component/shoplist/src/App.js"> Shopping List </a></li>
+        </ul>    
+      </nav>
+      </div>
+
+
+
+      
+    );
+  }
+}
+
  class RecipeList extends React.Component {
       render() {
           let recipeRows = this.props.entries.map(
@@ -127,8 +145,6 @@ class Recipe extends React.Component {
             ) ;
         }
     }
-
-    
 class File extends React.Component {
       render(){
     return (
@@ -163,151 +179,72 @@ class File extends React.Component {
         let entries = api.getAll();
           return (
                 <div className="jumbotron">
-                
-                
-                   
-                  
+                   <Header noEntries={this.props.entries.length} />
                   <NameForm addHandler={this.addRecipe}/>
                    <RecipeList entries={entries}
                    updateHandler={this.updateRecipe}/>
-              
+                   <File noEntries={this.props.length}/>
                    </div>
                  );
       }
     }
-class NameForm extends React.Component {
-   state = { name: '', ingredients: '', method : ''};
+  class NameForm extends React.Component {
+     state = { name: '', ingredients: '', method : ''};
 
-     handleSubmit = (e) => {
-           e.preventDefault();
-           let name = this.state.name.trim();
-           let ingredients = this.state.ingredients.trim();
-           let method = this.state.method.trim();
-           
-           this.props.addHandler(name,ingredients,method);
-           this.setState({name: '', ingredients: '', method: ''});
-           alert('Thanks for entering a new Recipe: ' +name);
-            e.preventDefault();
-        }
+       handleSubmit = (e) => {
+             e.preventDefault();
+             let name = this.state.name.trim();
+             let ingredients = this.state.ingredients.trim();
+             let method = this.state.method.trim();
+             
+             this.props.addHandler(name,ingredients,method);
+             this.setState({name: '', ingredients: '', method: ''});
+             alert('Thanks for entering a new Recipe: ' +name);
+              e.preventDefault();
+          }
 
-        handleNameChange = (e) =>  this.setState({name: e.target.value});
+          handleNameChange = (e) =>  this.setState({name: e.target.value});
 
-        handleIngredientsChange = (e) => this.setState({ingredients: e.target.value});
+          handleIngredientsChange = (e) => this.setState({ingredients: e.target.value});
 
-        handleMethodChange = (e) =>  this.setState({method: e.target.value});
+          handleMethodChange = (e) =>  this.setState({method: e.target.value});
 
 
-        render() {
-        return (
-          <div className="output">
-            <div className="row">
-              <h2> Add a new Recipe</h2>
-              <div className="col-sm-3" >
-                 <input type="text" className="form-control" 
-                      placeholder="Name"
-                      value={this.state.name}
-                      onChange={this.handleNameChange}
-                 />
-              </div>
-              <div className="col-sm-3" >
-                 <input type="text" className="form-control"
-                      placeholder="Ingredients"
-                      value={this.state.ingredients}
-                      onChange={this.handleIngredientsChange}
-                 />
+          render() {
+          return (
+            <div className="container-fluid">
+              <div className="row">
+                             
+                <div className="col-sm-3" >
+                   <input type="text" className="form-control" 
+                        placeholder="Name"
+                        value={this.state.name}
+                        onChange={this.handleNameChange}
+                   />
+                </div>
+                <div className="col-sm-3" >
+                   <input type="text" className="form-control"
+                        placeholder="Ingredients"
+                        value={this.state.ingredients}
+                        onChange={this.handleIngredientsChange}
+                   />
+                 </div>
+                <div className="col-sm-2" >
+                   <input type="text" className="form-control" 
+                        placeholder="Method"
+                        value={this.state.method}
+                        onChange={this.handleMethodChange}
+                   />
+                </div>    
+                <div className="col-sm-2" >
+                  <button type="button" className="btn btn-success" onClick={this.handleSubmit}>Add New Recipe</button>
+                </div>                         
                </div>
-              <div className="col-sm-2" >
-                 <input type="text" className="form-control" 
-                      placeholder="Method"
-                      value={this.state.method}
-                      onChange={this.handleMethodChange}
-                 />
-              </div>    
-              <div className="out" >
-                <button type="button" className="out" onClick={this.handleSubmit}>Add New Recipe</button>
-              </div>                         
-             </div>
-          </div>
-          );
+            </div>
+            );
 
+        }
       }
-    }
-
-
-// class RecipeListItem extends React.Component {}
-//     render() {
-//         return (
-//             <li> 
-//                 <h2>{this.props.recipe.name}</h2> 
-        
-//             </li>
-//         );
-//     }
-// }
-
-// class RecipeLists extends React.Component {
-//     shouldComponentUpdate(nextProps, nextState) {
-//         if (this.props.list.length === nextProps.list.length ) {
-//             return false ;
-//         } else {
-//             return true ;
-//         }     
-//     }
-
-//     render() {
-//         var items = this.props.list.map(function(item) {
-//             return <RecipeListItem key={item.email} recipe={item} />;
-//         });
-//         return (
-//             <ul>
-//                 {items}
-//             </ul>
-//         );
-//     }
-// }
-
-// class FiltetedRecipe extends React.Component {
-//     state = {
-//         searchText : ''
-//     };
-
-//     componentDidMount() {
-//         request.get('http://localhost:3000/entries')
-//             .end(function(error, res){
-//                 if (res) {
-//                     let entries = JSON.parse(res.text);
-//                     localCache.populate(entries);
-//                     this.setState({}) ;                
-//                 } else {
-//                     console.log(error );
-//                 }
-//             }.bind(this)); 
-//     }
-
-//     filterRecipes = (event) => {
-//         event.preventDefault() ;
-//         this.setState({searchText : 
-//              event.target.value.toLowerCase()});
-//     };
-
-//     render() {
-//         let updatedList = localCache.getAll().filter(
-//           (item) => {
-//              return item.name.toLowerCase().search(
-//                 this.state.searchText) !== -1 ;                
-//              }
-//         );
-//         return (
-//             <div>
-//                 <h1>Recipe List</h1>
-//                 <input type="text" placeholder="Search" 
-//                     onChange={this.filterRecipes} />
-//                 <RecipeList list={updatedList} />
-//             </div>
-//         );
-//     }
-// }
-
 
 
 export default RecipeApp;

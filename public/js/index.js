@@ -13,8 +13,25 @@ import Header from './header';
 import Footer from './footer';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 // import App from './component/shoplist/App';
- 
- let recipies = [
+
+
+// dotenv.config()
+//  const port = process.env.PORT
+// // // Configure our HTTP server to respond with Hello World to all requests.
+//  const server = http.createServer((req, res) => {
+//    res.writeHead(200, {'Content-Type': 'text/plain'});
+//    res.end('Hello  World!');
+//  });
+
+//  server.listen(port);
+
+// // // Put a friendly message on the terminal
+//  console.log(`Server running at ${port}`);
+
+
+
+
+    let entries = [
         { name: 'Carbonara',
     ingredients: 'Pasta, Cheese, Eggs, Bacon, Philidelphia Cheese',
     method: 'Boil pasta, mix ingredients. Bake in oven'
@@ -31,31 +48,7 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
   }
 ];
 
-
-  const Router = (props) => {
-  return (
-    <BrowserRouter>
-      <div>
-        <Header/>
-        <RecipeApp/>
-        <div className="container">
-            <Switch>
-                <Route path='/recipies/:id' component={ recipies } />
-                <Redirect from='*' to='/' />
-            </Switch>
-        </div>
-        <Footer />
-     </div>
-    </BrowserRouter>
-  );
-};
-
-    ReactDOM.render((
-        <Router/> 
-    ), document.getElementById('root')) ;
-
- 
    
-///ReactDOM.render(<Router/>, <RecipeApp entries={entries}/>, document.getElementById('root'));
-///registerServiceWorker();
+ReactDOM.render(<RecipeApp entries={entries}/>, document.getElementById('root'));
+registerServiceWorker();
 
