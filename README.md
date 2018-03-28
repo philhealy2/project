@@ -1,7 +1,5 @@
 # Assignment 1 - ReactJS app.
 
-Name: ... your name ...
-
 Name: Phil Healy
 Student Numeber: 20079557
 App Name: project/my-app (A Recipe app)
@@ -35,6 +33,7 @@ an alert will pop up thanking you for entering the recipe with the name outlined
 + Shopping list - create a shopping list of items required for the users choice
 + Remove - Independently remove each of the items from the shopping list 
 + Implemented a server side version using Mongo db and primed the recipe Entity with test data
++ Implemented components using express, babel, mongoose, elint, router etc. 
 
 Code layout:
 +my-app
@@ -53,23 +52,22 @@ Code layout:
 
 
 Installations:
-> Create-react-app my-app
-> Npm install - node modules
-> Run build 
-> npm install  bootstrap@3.3.6  --save
-> npm install -g httpserver
-> npm install  lodash@2.4.2 --save
-> npm install react-router-dom@4.2.2 --save
-> npm install  superagent@1.6.1 --save
-> git & configuration 
-> npm install --save-dev babel-cli
-> npm install --save-dev babel-preset-env
-> npm install --save express
-> npm install --save-dev eslint babel-eslint
-> npm install dotenv --save
-> Postman
-> npm install -save mongoose
-> npm install -save express-async-handler
++ Create-react-app my-app
++ Npm install - node modules
++ Run build 
++ npm install  bootstrap@3.3.6  --save
++ npm install -g httpserver
++ npm install  lodash@2.4.2 --save
++ npm install react-router-dom@4.2.2 --save
++ npm install  superagent@1.6.1 --save
++ git & configuration 
++ npm install --save-dev babel-cli
++ npm install --save-dev babel-preset-env
++ npm install --save express
++ npm install --save-dev eslint babel-eslint
++ npm install dotenv --save
++ npm install -save mongoose
++ npm install -save express-async-handler
 
 
 When cloning the app from my repository, you simply just need to run npm start 
@@ -91,7 +89,7 @@ Given more time I would modified my client app to call via a REST api get servic
 Below is a high level over of my app components
 
 ![image2](Components.jpg)
-![image3](Network diagram.JPG)
+![image3](Networkdiagram.jpg)
 
 ## UI Design.
 
@@ -100,7 +98,7 @@ The app has a simple 2 page design
 >Shopping list - which allows the user to make and persist a shopping list (Note I would have implemented an additional entity for this given the time)
 
 ![image4](shopping.png)
-![image5](shopping remove.png)
+![image5](shoppingremove.png)
 
 
 
@@ -117,6 +115,6 @@ The app has a simple 2 page design
 
 Alot of this is brand new technology to me and involved alot of additional hours learning and investigation
 
-+ Implementation of different aspects within the app
++ Implementation of different react aspects within the app
 + Implementing mongoose and incorporating it into the app
 + UI & Css designs
