@@ -80,7 +80,7 @@ When cloning the app from my repository, you simply just need to run npm start
 
 Diagram of app's data model (see example below)
 
-[data]:data.png
+[image 1]:data.PNG
 
 Given more time I would modified my client app to call via a REST api get service call to retrieve the recipe data. I would also have impemented update, edit and insert functionality. The code is partially developed to allow this.
 
