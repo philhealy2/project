@@ -90,8 +90,8 @@ Given more time I would modified my client app to call via a REST api get servic
 
 Below is a high level over of my app components
 
-![image2](Components.JPEG)
-![image3](Network diagram.JPEG)
+![image2](Components.JPG)
+![image3](Network diagram.JPG)
 
 ## UI Design.
 
@@ -99,8 +99,8 @@ The app has a simple 2 page design
 >Add recipe - which allows for viewing and editing existing recipes
 >Shopping list - which allows the user to make and persist a shopping list (Note I would have implemented an additional entity for this given the time)
 
-![image4] (shopping.png)
-![image5] (shopping remove.png)
+![image4](shopping.png)
+![image5](shopping remove.png)
 
 
 
