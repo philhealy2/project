@@ -10,11 +10,11 @@ App Name: project/my-app (A Recipe app)
 ## Overview.
 Note: Due to time constraints and learning curve for me I was not able to combine some of the implementation features for this project.
 However I attempted and partially/fully implemented all aspects including:
-> My own app concept
-> Seperate server instance with one Entity and mongo db connection
-> Attempted routing with header,footer and main area
-> Coded search functionality
-> Header and footer nav
++ My own app concept
++ Seperate server instance with one Entity and mongo db connection
++ Attempted routing with header,footer and main area
++ Coded search functionality
++ Header and footer nav
 
 Main concepts of the app is to add new recipes and view exisiting recipes. 
 The app includes a list of the existing recipes with the ingredients and method attached. Based on the recipe the user chooses they can then navigate to the Shopping list tab on the app (Note I could not get the Link To working so it will not load from the home page. I have attached screen shots to show it working seperately)
@@ -80,7 +80,6 @@ When cloning the app from my repository, you simply just need to run npm start
 
 Diagram of app's data model (see example below)
 
-![]
 [data]:data.png
 
 Given more time I would modified my client app to call via a REST api get service call to retrieve the recipe data. I would also have impemented update, edit and insert functionality. The code is partially developed to allow this.
