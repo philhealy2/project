@@ -90,19 +90,17 @@ Given more time I would modified my client app to call via a REST api get servic
 
 Below is a high level over of my app components
 
-![][image2]
-
-
-
+![image2](Components.JPEG)
+![image3](Network diagram.JPEG)
 
 ## UI Design.
 
 The app has a simple 2 page design
 >Add recipe - which allows for viewing and editing existing recipes
 >Shopping list - which allows the user to make and persist a shopping list (Note I would have implemented an additional entity for this given the time)
-![]
-[shopping] shopping.png
-[shopping remove] shopping remove.png
+
+![image4] (shopping.png)
+![image5] (shopping remove.png)
 
 
 
@@ -119,11 +117,6 @@ The app has a simple 2 page design
 
 Alot of this is brand new technology to me and involved alot of additional hours learning and investigation
 
-
-[image1]: ./model.png
-[image2]: ./design.jpg
-[image3]: ./screen.png
-
-> Implementation of different aspects within the app
-> Implementing mongoose and incorporating it into the app
-> UI & Css designs
++ Implementation of different aspects within the app
++ Implementing mongoose and incorporating it into the app
++ UI & Css designs
