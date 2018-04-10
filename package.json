@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.6",
+    "create-react-class": "^15.6.3",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "react": "^16.2.0",
@@ -21,7 +22,6 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
   "devDependencies": {
-    
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
     "nodemon": "^1.17.2"

@@ -2,16 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import RecipeApp from './App';
+import Shopping from './shoplist';
 import registerServiceWorker from './registerServiceWorker';
 import http from 'http';
 import dotenv from 'dotenv';
-
+import Link from 'react-router-dom/Link';
 import mongoose from 'mongoose';
-import {loadEntries} from './entriesData';
-import FiltetedRecipe from './App';
-import Header from './header';
 import Footer from './footer';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import './App.css';
+import { BrowserRouter, Route,Router, Redirect, Switch } from 'react-router-dom';
 // import App from './component/shoplist/App';
  
  let recipies = [
@@ -31,31 +30,41 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
   }
 ];
 
+// this component will be rendered by our <___Router>
+const App = () => (
+  <div>
+    <Header />
+    <Main />
+    <Footer/>
+  </div>
+)
 
-  const Router = (props) => {
-  return (
-    <BrowserRouter>
-      <div>
-        <Header/>
-        <RecipeApp/>
-        <div className="container">
-            <Switch>
-                <Route path='/recipies/:id' component={ recipies } />
-                <Redirect from='*' to='/' />
-            </Switch>
-        </div>
-        <Footer />
-     </div>
-    </BrowserRouter>
-  );
-};
+const Main = () => (
+  <main>
+    <Switch>
+      <Route path='/recipe' component={RecipeApp}/>
+      <Route path='/shoplist' component={Shopping}/>
+    </Switch>
+  </main>
+)
 
-    ReactDOM.render((
-        <Router/> 
-    ), document.getElementById('root')) ;
+const Header = () => (
+  <header>
+  <div className="header" >
+         <h1>Cooking Corner</h1>
+        <img src="chefs.jpg" />
+    </div>
+    <nav id='bar'>
+      <ul>
+        <li><Link to='/recipe'>Add Recipe</Link></li>
+        <li><Link to='/shoplist'>Shopping List</Link></li>
+      </ul>
+    </nav>
+  </header>
+)
 
- 
-   
-///ReactDOM.render(<Router/>, <RecipeApp entries={entries}/>, document.getElementById('root'));
-///registerServiceWorker();
-
+ReactDOM.render((
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+), document.getElementById('root'))
