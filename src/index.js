@@ -45,6 +45,7 @@ const Main = () => (
       <Route path='/recipe' component={RecipeApp}/>
       <Route path='/shoplist' component={Shopping}/>
     </Switch>
+
   </main>
 )
 
@@ -56,7 +57,7 @@ const Header = () => (
     </div>
     <nav id='bar'>
       <ul>
-        <li><Link to='/recipe'>Add Recipe</Link></li>
+        <li><Link to='/recipe'>Add & View Recipes</Link></li>
         <li><Link to='/shoplist'>Shopping List</Link></li>
       </ul>
     </nav>

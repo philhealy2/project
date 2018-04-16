@@ -18,6 +18,9 @@ const Header = (props) =>
                     <li><Link to="/shoplist" className='Shopping'>Shopping List</Link></li>                  
                 </ul>
             </nav>
+            <p>
+            hello
+            </p>
     </div>
     </Router>
 

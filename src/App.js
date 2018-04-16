@@ -68,13 +68,13 @@ class Recipe extends React.Component {
                    leftButtonHandler = this.handleSave;
                    rightButtonHandler = this.handleCancel ;
                    fields = [
-                      <input type="text" className="form-control"
+                      <input type="text" className="form-control1"
                          value={this.state.name}
                          onChange={this.handleNameChange} />,
-                      <input type="text" className="form-control"
+                      <input type="text" className="form-control1"
                          value={this.state.ingredients}
                          onChange={this.handleIngredientsChange} />,
-                      <input type="text" className="form-control"
+                      <input type="text" className="form-control1"
                          value={this.state.method}
                          onChange={this.handleMethodChange} />
                    ] ;
