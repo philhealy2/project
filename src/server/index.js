@@ -2,7 +2,7 @@
 // Load the http module to create an http server.
 import React from 'react';
 import ReactDOM from 'react-dom';
-import mongoose from 'mongoose';
+//import mongoose from 'mongoose';
 import http from 'http';
 import dotenv from 'dotenv'
 import express from 'express';
@@ -15,18 +15,23 @@ const app = express();
 
 const port = process.env.PORT;
 
+const mongoose = require("mongoose")
+mongoose.connect("mongodb://localhost:27017/entries_db");
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 // Connect to database
-mongoose.connect(process.env.mongoDB);
+//mongoose.connect(process.env.mongoDB);
 // Populate DB with sample data
-if (process.env.seedDb) {
-  loadRecipies();
-}
+
+loadRecipies();
 
 app.use(express.static('public'));
 
 app.use('/api/recipies', recipieRouter);
 app.use(express.static('public'));
 
-app.listen(port, () => {
+app.listen(8080, () => {
   console.info(`Server running at ${port}`);
 });
