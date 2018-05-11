@@ -3,17 +3,8 @@ const Schema = mongoose.Schema;
 
 const RecipieSchema = new Schema({
   name: String,
-  address: String,
-  age: {
-    type: Number,
-    min: 0,
-    max: 120,
-  },
-  email: String,
-  updated: {
-    type: Date,
-    default: Date.now,
-  },
+  ingredients: String,
+  method: String,
 });
 
 export default mongoose.model('Recipie', RecipieSchema);

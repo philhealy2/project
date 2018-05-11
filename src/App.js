@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import api from './test/StubApi.js';
 import buttons from './config/buttonsConfig';
 import localCache from './localCache';
 
@@ -20,6 +19,7 @@ class Recipe extends React.Component {
         };
 
         handleEdit = () =>  this.setState({ status : 'edit'} );
+       
         handleSave = (e) => {e.preventDefault();
         let name = this.state.name.trim();
         let ingredients = this.state.ingredients.trim();
@@ -31,6 +31,7 @@ class Recipe extends React.Component {
         this.props.updateHandler(this.props.recipe.method,
               name, ingredients, method);
       };        
+
        handleDelete = (e) => {e.preventDefault();
         let name = "";
         let ingredients = "";
@@ -113,17 +114,43 @@ class Recipe extends React.Component {
     
 
  class RecipeList extends React.Component {
-      render() {
-          let recipeRows = this.props.entries.map(
+
+       state = {
+        entries : []
+    };
+
+    componentDidMount() {
+       
+    fetch('http://localhost:8080/api/recipies',{
+        method: "GET",
+        headers: {
+            "Accept": "application/json"
+        }
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson);
+      let entries = responseJson;
+      this.setState({entries : 
+              responseJson});
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+    }
+
+    render() {
+          let recipeRows = this.state.entries.map(
                 (r) => <Recipe key={r.method} recipe={r}
                 updateHandler={this.props.updateHandler} />
           );
-          return (
-            <div className="container-fluid contacts">
+           return (     
+             <div className="container-fluid contacts">
               <div className="row">
                  {recipeRows}  
               </div>
-              </div>
+               </div>
+              // </div>
             ) ;
         }
     }
@@ -152,21 +179,44 @@ class File extends React.Component {
 
  class RecipeApp extends React.Component {
   addRecipe = (key, n, i, m) => {
-           api.add(key, n,i,m) ;
+          // api.add(key, n,i,m) ;
            this.setState({});
         };
+
   updateRecipe = (key, n, i, m) => {
-    api.update(key,n,i,m);
+   // api.update(key,n,i,m);
+   fetch('http://localhost:8080/api/recipies',{
+        method: "PUT",
+        mode: 'cors',
+        body: JSON.stringify(RecipeList),
+        headers: {
+            "Accept": "application/json",
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin": "http://localhost:3000",
+            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+
+        }
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson);
+      let entries = responseJson;
+      this.setState({entries : 
+              responseJson});
+    })
+    .catch((error) => {
+      console.error(error);
+    });
     this.setState({});
   }
+
+
       render() {
-        let entries = api.getAll();
+        let entries = [];
           return (
                 <div className="jumbotron">
                 
-                
-                   
-                  
                   <NameForm addHandler={this.addRecipe}/>
                    <RecipeList entries={entries}
                    updateHandler={this.updateRecipe}/>
@@ -174,7 +224,8 @@ class File extends React.Component {
                    </div>
                  );
       }
-    }
+}
+
 class NameForm extends React.Component {
    state = { name: '', ingredients: '', method : ''};
 
@@ -186,15 +237,31 @@ class NameForm extends React.Component {
            
            this.props.addHandler(name,ingredients,method);
            this.setState({name: '', ingredients: '', method: ''});
-           alert('Thanks for entering a new Recipe: ' +name);
+          
+          var data = [{"name": "dmccreadie0"}];
+            fetch('http://localhost:8080/api/recipies',{
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+       },
+         body: JSON.stringify(data)
+      }).then((res) => res.json())
+            .then((data) =>  console.log(data))
+            .catch((err)=>console.log(err))
+
+             alert('Thanks for entering a new Recipe: ' + name);
             e.preventDefault();
-        }
+          }
+        
 
         handleNameChange = (e) =>  this.setState({name: e.target.value});
 
         handleIngredientsChange = (e) => this.setState({ingredients: e.target.value});
 
         handleMethodChange = (e) =>  this.setState({method: e.target.value});
+
 
 
         render() {

@@ -1,12 +1,16 @@
 import _ from 'lodash';
+import localCache from './../localCache';
 
+var request = require('superagent') ;
+var entries;
 
     class StubAPI {
 
         constructor() {
-            this.entries = [
+
+ this.entries = [
                
-        { name: 'Carbonara',
+  { name: 'Carbonara',
     ingredients: 'Pasta, Cheese, Eggs, Bacon, Philidelphia Cheese',
     method: 'Boil pasta, mix ingredients. Bake in oven'
   },
@@ -21,8 +25,7 @@ import _ from 'lodash';
     method:'Cream the butter and sugar. Melt the Chocolate, add in the eggs to creamed mixture. Bake in the oven for 45mins'
   }
 ];
-
-        }
+}
 
         delete(k) {
             let elements = _.remove(this.entries, 
@@ -30,17 +33,15 @@ import _ from 'lodash';
             );
             return elements; 
         }
-
-       
-
         getAll() {
+
             return this.entries ;
         }
 
         add(n,i,m) {
             let len = this.entries.length ;
             let newLen = this.entries.push({
-                name: n, ingredients: i, method: m }) ;
+                name: n, ingredients : i, method: m }) ;
             return newLen > len ;
         }
 
