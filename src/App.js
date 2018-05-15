@@ -3,15 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 import buttons from './config/buttonsConfig';
 import localCache from './localCache';
-
 import { Link } from 'react-router-dom';
+import {Button} from 'react-bootstrap';
+
 var request = require('superagent') ;
-
-
-
 
 class Recipe extends React.Component {
         state = {
+          id : this.props.recipe._id,
           status : '',
           name: this.props.recipe.name,
           ingredients: this.props.recipe.ingredients,
@@ -24,22 +23,23 @@ class Recipe extends React.Component {
         let name = this.state.name.trim();
         let ingredients = this.state.ingredients.trim();
         let method = this.state.method.trim();
+        let id = this.props.recipe._id
         if (!name || !ingredients || !method) {
            return;
         }
         this.setState({status : ''} )
         this.props.updateHandler(this.props.recipe.method,
-              name, ingredients, method);
+              name, ingredients, method,id);
       };        
 
        handleDelete = (e) => {e.preventDefault();
         let name = "";
         let ingredients = "";
         let method = "";
-      
-        this.setState({status : ''} )
+      let id = this.props.recipe._id
+        this.setState({status : 'delete'} )
         this.props.updateHandler(this.props.recipe.method,
-              name, ingredients, method);
+              name, ingredients, method,id);
       };                                
           handleCancel = () => {
               this.setState({ status : '', 
@@ -54,6 +54,8 @@ class Recipe extends React.Component {
                    this.setState({method: e.target.value});
 
       render()  {
+
+
       
              let activeButtons = buttons.normal ;
              let leftButtonHandler = this.handleEdit ;
@@ -83,11 +85,13 @@ class Recipe extends React.Component {
               return (
                 <div className="col-sm-3" >
                   <div className="panel-body">
-                      
-                        <div className="panel-body"> 
+                       <div className="panel-body"> 
                           {fields}            
                         </div>
+
                         <div className="panel-footer"> 
+                        <div >
+       </div>
                           <div className="btn-group btn-group-justified" role="group" aria-label="...">
                               <div className="button" role="group">
                                 <button type="button" 
@@ -183,19 +187,22 @@ class File extends React.Component {
            this.setState({});
         };
 
-  updateRecipe = (key, n, i, m) => {
-   // api.update(key,n,i,m);
-   fetch('http://localhost:8080/api/recipies',{
-        method: "PUT",
-        mode: 'cors',
-        body: JSON.stringify(RecipeList),
-        headers: {
-            "Accept": "application/json",
-            'Content-Type': 'application/json',
-            "Access-Control-Allow-Origin": "http://localhost:3000",
-            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+  updateRecipe = (key, n, i, m, p) => {
+   if(this.status == 'delete')
+   {
 
+   }
+   else{
+   fetch('http://localhost:8080/api/recipies/' + p,{
+        method: "PUT",
+        body: JSON.stringify({
+   'id' : p,
+   'name' : n,
+   'ingredients' : i,
+   'method' : m
+  }),
+        headers: {
+             'Content-Type': 'application/json',
         }
     })
     .then((response) => response.json())
@@ -210,7 +217,7 @@ class File extends React.Component {
     });
     this.setState({});
   }
-
+}
 
       render() {
         let entries = [];
@@ -238,15 +245,16 @@ class NameForm extends React.Component {
            this.props.addHandler(name,ingredients,method);
            this.setState({name: '', ingredients: '', method: ''});
           
-          var data = [{"name": "dmccreadie0"}];
-            fetch('http://localhost:8080/api/recipies',{
+        fetch('http://localhost:8080/api/recipies',{
         method: 'POST',
-        mode: 'no-cors',
+         body: JSON.stringify({
+   'name' : name,
+   'ingredients' : ingredients,
+   'method' : method
+  }),
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-       },
-         body: JSON.stringify(data)
+            'Content-Type': 'application/json',
+       }
       }).then((res) => res.json())
             .then((data) =>  console.log(data))
             .catch((err)=>console.log(err))

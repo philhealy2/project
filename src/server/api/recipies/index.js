@@ -29,6 +29,8 @@ router.post('/', asyncHandler(async (req, res) => {
   console.info(`POST REQUEST`);
   console.info(JSON.stringify(req.body, null, 4));
   const recipie = await Recipie.create(req.body);
+      res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   if (!recipie) return res.sendStatus(404);
   return res.status(204).send(recipie);
    } catch (error) {

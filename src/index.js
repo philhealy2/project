@@ -11,6 +11,7 @@ import mongoose from 'mongoose';
 import Footer from './footer';
 import './App.css';
 import { BrowserRouter, Route,Router, Redirect, Switch } from 'react-router-dom';
+import LoginView from './loginPage';
 // import App from './component/shoplist/App';
  
  let recipies = [
@@ -42,6 +43,7 @@ const App = () => (
 const Main = () => (
   <main>
     <Switch>
+      <Route path="/login" component={LoginView} />
       <Route path='/recipe' component={RecipeApp}/>
       <Route path='/shoplist' component={Shopping}/>
     </Switch>
@@ -55,10 +57,12 @@ const Header = () => (
          <h1>Cooking Corner</h1>
         <img src="chefs.jpg" />
     </div>
+   <div> {<Link to="/login">Login/Signup</Link>}</div>
     <nav id='bar'>
       <ul>
         <li><Link to='/recipe'>Add & View Recipes</Link></li>
         <li><Link to='/shoplist'>Shopping List</Link></li>
+
       </ul>
     </nav>
   </header>
