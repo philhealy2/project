@@ -4,7 +4,6 @@ import * as api from './api';
 import Auth from './auth';
 import { browserHistory } from 'react-router';
 
-
 const LoginPage = (props) => {
     const signupWasClickedCallback = async (data) => {
       try{
