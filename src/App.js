@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -678,4 +677,3 @@ class File extends React.Component {
 
 export default RecipeApp;
 
->>>>>>> origin/master

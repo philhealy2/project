@@ -17,6 +17,8 @@ router.get('/', async (req, res) => {
 
 // Register/login a user, using async handler
 router.post('/', asyncHandler(async (req, res) => {
+	console.info(`POST REQUEST`);
+  console.info(JSON.stringify(req.body, null, 4));
   if (!req.body.username || !req.body.password) {
     res.json({
       success: false,
@@ -42,7 +44,7 @@ router.post('/', asyncHandler(async (req, res) => {
     user.comparePassword(req.body.password, (err, isMatch) => {
       if (isMatch && !err) {
         // if user is found and password is right create a token
-        const token = jwt.sign(user.username, process.env.secret);
+        const token = jwt.sign(user.username, 'ilikecake');
         // return the information including token as JSON
         res.status(200).json({
           success: true,

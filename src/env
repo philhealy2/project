@@ -3,3 +3,4 @@ PORT=8080
 HOST=localhost
 mongoDB=mongodb://localhost:27017/entries_db
 seedDb=true
+secret=ilikecake

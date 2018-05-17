@@ -21,11 +21,11 @@ export const add = async (newTitle, newLink) => {
 };
 
 export const login = async (username, password) => {
-  const resp = await axios.post('/api/users', { username: username, password: password });
+  const resp = await axios.post('http://localhost:8080/api/users', { username: username, password: password });
   return resp.data;
 };
 
 export const signup = async (username, password) => {
-  const resp = await axios.post('/api/users?action=register', { username: username, password: password });
+  const resp = await axios.post('http://localhost:8080/api/users?action=register', { username: username, password: password });
   return resp.data;
 };

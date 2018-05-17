@@ -26,10 +26,6 @@ var cors = require('cors');
 
 app.use(cors());
 
-// Connect to database
-//mongoose.connect(process.env.mongoDB);
-// Populate DB with sample data
-
 loadRecipies();
 loadUsers();
 
