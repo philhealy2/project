@@ -4,7 +4,6 @@ export const upvote = async (postId) => {
    axios.post(`/api/posts/${postId}/upvote`)
               .then(resp => resp.data);
 };
-
 export const getAll = async () => {
    const resp = await axios.get('/api/posts',{headers: {'Authorization': auth.getToken()}},)
    return resp.data;

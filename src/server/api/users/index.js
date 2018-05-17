@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+
 // Register/login a user, using async handler
 router.post('/', asyncHandler(async (req, res) => {
 	console.info(`POST REQUEST`);

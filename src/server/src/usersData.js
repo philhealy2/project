@@ -11,6 +11,7 @@ const users = [
   },
 ];
 
+
 export const loadUsers = () => {
   userModel.find({}).remove(() => {
     users.forEach((user)=>{
