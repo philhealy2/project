@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
 @import url('https://fonts.googleapis.com/css?family=Kalam');
-
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 html{
   background-color: white;
   background-color: #0f6d17;
@@ -197,7 +197,7 @@ input{
   font-size: 25px;
   padding:0em;
   margin-right: 125px;
-  margin-left: 250px;
+  margin-left: 100px;
   width:100%;
 
 }
@@ -302,3 +302,64 @@ label {
 .form-control1{
   font-size:0.7em;
 }
+
+#log a {
+  color:red;
+  margin: 2em;
+  padding: 2em;
+}
+
+#login {
+  color:Navy;
+  height: 100%;
+}
+#login button {
+  width: 150px;
+  height: 90px;
+  font-size: 0.8em;
+  color: white;
+  background-color: #d6425d;
+  font-weight: Bold;
+  cursor: pointer;
+ 
+  
+  border: 1px solid #DDD;
+  border-radius: 5px;
+
+
+}
+#login {
+  margin-left:30%;
+  margin-top:4em;
+  margin-bottom: 4em;
+  font-family: 'Indie Flower', cursive;
+  font-size:1.5em;
+  font-weight:bold;
+  
+}
+#login button:hover{
+  color:Blue;
+}
+#login{
+  height:450px;
+ 
+  
+
+}
+#login submit{
+  color:red;
+}
+ {
+  border: 1px solid rgb(238, 238, 238);
+    border-radius: 3px;
+    background-color: rgb(250, 250, 250);
+    margin: 300px;
+    padding: 20px;
+    max-width: 800px;
+    width: 800px;
+    height:800px;
+   
+    
+
+}
+

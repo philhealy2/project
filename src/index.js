@@ -57,9 +57,10 @@ const Header = () => (
          <h1>Cooking Corner</h1>
         <img src="chefs.jpg" />
     </div>
-   <div> {<Link to="/login">Login/Signup</Link>}</div>
+   
     <nav id='bar'>
       <ul>
+        <li><Link to='/login'>Login/Sign Up</Link></li>
         <li><Link to='/recipe'>Add & View Recipes</Link></li>
         <li><Link to='/shoplist'>Shopping List</Link></li>
 

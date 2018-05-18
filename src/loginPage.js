@@ -3,6 +3,8 @@ import ReactSignupLoginComponent from 'react-signup-login-component';
 import * as api from './api';
 import Auth from './auth';
 import { browserHistory } from 'react-router';
+import './App.css';
+
 
 const LoginPage = (props) => {
     const signupWasClickedCallback = async (data) => {
@@ -27,7 +29,7 @@ const loginWasClickedCallback = async function(data) {
     };
 
     return (
-        <div>
+        <div id="login">
             <ReactSignupLoginComponent
                 title="Cooking Corner"
                 handleSignup={signupWasClickedCallback}
