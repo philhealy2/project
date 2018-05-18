@@ -9,7 +9,9 @@ import express from 'express';
 import recipieRouter from './api/recipies';
 import {loadRecipies} from './src/recipiesData';
 import {loadUsers} from './src/usersData';
+import {loadShoplist} from './src/shoplistData';
 import usersRouter from './api/users';
+import shoplistRouter from './api/shoplist';
 
 
 dotenv.config();
@@ -29,9 +31,11 @@ app.use(cors());
 
 loadRecipies();
 loadUsers();
+loadShoplist();
 
 app.use('/api/recipies', recipieRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/shoplist', shoplistRouter);
 app.use(express.static('public'));
 
 app.listen(8080, () => {

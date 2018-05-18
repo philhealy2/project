@@ -30,7 +30,7 @@ const loginWasClickedCallback = async function(data) {
 
     return (
         <div id="login">
-            <ReactSignupLoginComponent
+            < ReactSignupLoginComponent
                 title="Cooking Corner"
                 handleSignup={signupWasClickedCallback}
                 handleLogin={loginWasClickedCallback}

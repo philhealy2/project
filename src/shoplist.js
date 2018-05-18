@@ -14,7 +14,8 @@ class App extends Component{
     this.ItemInput=""
   }
 
-  addItem(){
+
+addItem(){
     let itemValue= this.itemInput.value
     let newItems= this.state.items
 
@@ -24,6 +25,24 @@ class App extends Component{
     this.setState({
       items:newItems
     })
+
+    fetch('http://localhost:8080/api/shoplist/',{
+        method: "PUT",
+        body: JSON.stringify({
+   'item' : itemValue
+  }),
+        headers: {
+             'Content-Type': 'application/json',
+        }
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
     //reset Value
     this.itemInput.value =""
 
