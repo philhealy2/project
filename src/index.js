@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import RecipeApp from './App';
 import Shopping from './shoplist';
+import Comment from './comment';
 import registerServiceWorker from './registerServiceWorker';
 import http from 'http';
 import dotenv from 'dotenv';
@@ -12,6 +13,8 @@ import Footer from './footer';
 import './App.css';
 import { BrowserRouter, Route,Router, Redirect, Switch } from 'react-router-dom';
 import LoginView from './loginPage';
+
+
 // import App from './component/shoplist/App';
  
  let recipies = [
@@ -46,6 +49,8 @@ const Main = () => (
       <Route path="/login" component={LoginView} />
       <Route path='/recipe' component={RecipeApp}/>
       <Route path='/shoplist' component={Shopping}/>
+       <Route path='/comment' component={Comment}/>
+  
     </Switch>
 
   </main>
@@ -63,6 +68,9 @@ const Header = () => (
         <li><Link to='/login'>Login/Sign Up</Link></li>
         <li><Link to='/recipe'>Add & View Recipes</Link></li>
         <li><Link to='/shoplist'>Shopping List</Link></li>
+        <li><Link to='/comment'>Reviews</Link></li>
+
+
 
       </ul>
     </nav>

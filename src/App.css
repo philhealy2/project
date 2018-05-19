@@ -199,8 +199,8 @@ input{
   font-family: "lato",sans-serif;
   font-size: 25px;
   padding:0em;
-  margin-right: 125px;
-  margin-left: 100px;
+  margin-right: 100px;
+  margin-left: 50px;
   width:100%;
 
 }
@@ -307,6 +307,28 @@ label {
   
   height:50px;
   margin:5px;
+
+}
+.body1 input{
+  font-size: 1em;
+  margin-top: 3em;
+  margin-bottom: 4em;
+
+  margin-left: 15em;
+}
+.body1 ul{
+  text-decoration: none;
+}
+.items{
+  color:white;
+  padding-bottom: 4em;
+
+}
+.items button{
+  font-size:0.8em;
+  
+  height:50px;
+  margin:10px;
 
 }
 
