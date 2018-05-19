@@ -60,15 +60,28 @@ class Recipe extends React.Component {
 
       render()  {
 
+           
+
              let activeButtons = buttons.normal ;
              let leftButtonHandler = this.handleEdit ;
              let rightButtonHandler = this.handleDelete ;
+
+             var str = this.state.ingredients;
+             var temp = new Array();
+             // this will return an array with strings "1", "2", etc.
+             temp = str.split(",");
+
+             var names = temp;
+             var namesList = names.map(function(name){
+                        return <li>{name}</li>;
+                      })
+
+
              let fields = [
                      <p key={'name'}>Name: {this.state.name}</p>,
-                     <p key={'ingredients'}>Ingredients:  {this.state.ingredients}</p>,
+                     <p key={'ingredients'}>Ingredients:  {namesList}</p>,
                      <p key={'method'} >Method:  {this.state.method}</p>,
                     ] ;
-
                 if (this.state.status === 'edit' ) {
                    activeButtons = buttons.edit ;
                    leftButtonHandler = this.handleSave;
@@ -113,12 +126,7 @@ class Recipe extends React.Component {
                           </div>                     
                         </div>          
                     </div>
-                                     <form>
-  <label>
-    Comment:
-    <input type="text" name="Comment" /></label>
-  <input type="submit" value="Submit" />
-</form>
+                                    
                     </div>
 
                    ) ; 

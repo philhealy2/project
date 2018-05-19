@@ -24,7 +24,7 @@ describe('Users API unit test', function() {
     supertest(app)
     .post('/api/users')
     .query({action: 'register'})
-    .send({username: 'Contact 99', password: 'test1'})
+    .send({username: '1234', password: 'test1'})
     .expect('Content-type', /json/)
     .expect(201)
     .end(function(err, res) {
