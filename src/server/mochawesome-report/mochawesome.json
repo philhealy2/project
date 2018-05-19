@@ -1,0 +1,152 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2018-05-19T11:50:01.736Z",
+    "end": "2018-05-19T11:50:10.227Z",
+    "duration": 8491,
+    "testsRegistered": 4,
+    "passPercent": 25,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 2,
+    "hasSkipped": true,
+    "passPercentClass": "danger",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "25ddbf1a-8480-4c45-a176-74c08c4f0fb2",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "a0a91694-bc04-490f-b682-02ed5a0b0906",
+        "title": "Recipe API unit test",
+        "fullFile": "C:\\Users\\Toshiba1\\Documents\\project\\my-app\\src\\server\\test\\testRecipeApi.js",
+        "file": "\\test\\testRecipeApi.js",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "should return collection of JSON documents",
+            "fullTitle": "Recipe API unit test should return collection of JSON documents",
+            "timedOut": false,
+            "duration": 8406,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
+            "pending": false,
+            "code": "// calling home page api\n(0, _supertest2.default)(_index.app).get('/api/recipies').expect('Content-type', /json/).expect(200) // This is the HTTP response\n.end(function (err, res) {\n  // HTTP status should be 200\n  res.status.should.equal(200);\n  done();\n});",
+            "err": {
+              "message": "Error: spawn cmd.exe ENOENT",
+              "estack": "Error: spawn cmd.exe ENOENT\n    at _errnoException (util.js:1022:11)\n    at Process.ChildProcess._handle.onexit (internal/child_process.js:190:19)\n    at onErrorNT (internal/child_process.js:372:16)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)"
+            },
+            "isRoot": false,
+            "uuid": "a4f63e77-9fa2-4dcd-95c9-1dedd8d311a3",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [],
+        "failures": [
+          "a4f63e77-9fa2-4dcd-95c9-1dedd8d311a3"
+        ],
+        "pending": [],
+        "skipped": [],
+        "duration": 8406,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 120000
+      },
+      {
+        "uuid": "ad43d2dc-4c8f-4d8f-b13c-41437ab5653d",
+        "title": "Users API unit test",
+        "fullFile": "C:\\Users\\Toshiba1\\Documents\\project\\my-app\\src\\server\\test\\testUsersAPI.js",
+        "file": "\\test\\testUsersAPI.js",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "should return collection of JSON documents",
+            "fullTitle": "Users API unit test should return collection of JSON documents",
+            "timedOut": false,
+            "duration": 0,
+            "state": "passed",
+            "speed": "fast",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "// calling home page api\n(0, _supertest2.default)(_index.app).get('/api/users').expect('Content-type', /json/).expect(200) // This is the HTTP response\n.end(function (err, res) {\n  // HTTP status should be 200\n  res.status.should.equal(200);\n  done();\n});",
+            "err": {},
+            "isRoot": false,
+            "uuid": "3afb2927-c392-4286-9bbb-5a0d8a37f215",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "should register a user",
+            "fullTitle": "Users API unit test should register a user",
+            "timedOut": false,
+            "duration": 0,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "// post to /api/contacts\n(0, _supertest2.default)(_index.app).post('/api/users').query({ action: 'register' }).send({ username: 'Contact 99', password: 'test1' }).expect('Content-type', /json/).expect(201).end(function (err, res) {\n  res.status.should.equal(201);\n  res.body.success.should.equal(true);\n  done();\n});",
+            "err": {},
+            "isRoot": false,
+            "uuid": "45d1a22b-ce37-439f-9466-1152deba1ccc",
+            "isHook": false,
+            "skipped": true
+          },
+          {
+            "title": "should authenticate a user",
+            "fullTitle": "Users API unit test should authenticate a user",
+            "timedOut": false,
+            "duration": 0,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "// post to /api/contacts\n(0, _supertest2.default)(_index.app).post('/api/users').send({ username: 'user1', password: 'test1' }).expect('Content-type', /json/).expect(201).end(function (err, res) {\n  res.status.should.equal(200);\n  res.body.token.substring(0, 3).should.equal('JWT');\n  done();\n});",
+            "err": {},
+            "isRoot": false,
+            "uuid": "8b838a8c-98dc-4b52-a970-66ca27f899a2",
+            "isHook": false,
+            "skipped": true
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "3afb2927-c392-4286-9bbb-5a0d8a37f215"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [
+          "45d1a22b-ce37-439f-9466-1152deba1ccc",
+          "8b838a8c-98dc-4b52-a970-66ca27f899a2"
+        ],
+        "duration": null,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 120000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2018
+}

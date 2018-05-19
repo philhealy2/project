@@ -6,6 +6,7 @@
     "body-parser": "^1.18.2",
     "bootstrap": "^3.3.6",
     "cors": "^2.8.4",
+    "cross-env": "^5.1.5",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-async-errors": "^2.1.2",
@@ -16,19 +17,29 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "react-uikit-comment": "^2.0.2",
+    "save-dev": "^2.0.0",
     "superagent": "^1.6.1"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node index.js"
+    "start": "cross-env NODE_ENV=development nodemon --ignore hackerNews/* --exec babel-node index.js",
+    "test": "cross-env NODE_ENV=test mocha --require babel-core/register --require babel-polyfill --reporter mochawesome --exit",
+    "pretest": "eslint *.js ./api/*.js ./test/*.js"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
-    "nodemon": "^1.17.2"
+    "mocha": "^5.2.0",
+    "mochawesome": "^3.0.2",
+    "mockgoose": "^7.3.5",
+    "nodemon": "^1.17.2",
+    "should": "^13.2.1",
+    "supertest": "^3.1.0"
   },
   "repository": {
     "type": "git",
