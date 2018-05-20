@@ -33,11 +33,7 @@ an alert will pop up thanking you for entering the recipe with the name outlined
 The same mongo integration applies for the shopping list - once item added, shoplist data base is updated with new entry. Same applies for delete. Database will be updated and item removed. 
 
 
-
-...... A statement of the app concept and objectives (about a half-page) ........
-
-
- . . . . . List of user features (excluding user registration and authentication) . . . .
+ ## User Features
 
 + Insert input form -add new recipe
 + Footer navigation - to the top of the page
@@ -99,43 +95,71 @@ Diagram of app's data model (see example below) AND/OR a sample of the test data
 
 ![image1](model.PNG)
 
-Use meaningful sample data. Briefly explain any non-trivial issues.
+
 
 ## App Component Design.
 
-A diagram showing the app's hierarchical component design (see example below).
+A diagram showing the app's hierarchical component design is below and also details the various HTTP commands executed on each entity component.
 
-![][image2]
+![image1](Networkdiagram2.jpg)
 
 ## UI Design.
 
 . . . . . Screenshots of app's views (see example below) with appropriate captions (user regeneration and login views, if implemented, can be omitted) . . . . . . .
 
-![][image3]
+![image2](screen1.png)
+![image3](screen2.png)
+![image4](screen3.png)
+![image5](screen4.png)
+![image6](screen5.png)
 
 ## Routing.
 . . . . List each route supported and state the associated view . . . . .
 
-+ /foos - displays all published foos
-+ /foos/:id - detail view of a particular foo (:id)
-+ etc
-+ etc
+  +   <Route path="/login" component={LoginView} /> - Displays login view
+  +   <Route path='/recipe' component={RecipeApp}/> - Displays main recipe view
+  +   <Route path='/shoplist' component={Shopping}/> - Displays shopping list view
+  +   <Route path='/comment' component={Comment}/> - Displays comment view
 
 # Web API Endpoint Reference
-. . . Give a brief overview of the Web API functionality.
+As seen in the component diagram above we had 3 main entities that the app integrated with. For each entity we used 3 different api components for adding, retrieving and updating the data for recipe, user and shopping list. For both the shoplist and recipe we used the react fetch method. For the user we used the axios functionality to show 2 different ways of integrating with the server side. 
 
 ## Web API Install and Operation
-. . . . Describe how to install/start/stop the API. It would be a good idea to go though the scripts section of the package.json file.
+
+The server code root is contained in \project\src\server
+
++ npm start will start the server on localhost 8080
++ npm test will run the mocha test suites 
+
+
+    "start": "cross-env NODE_ENV=development nodemon  --exec babel-node index.js",
+    "test": "cross-env NODE_ENV=test mocha --require babel-core/register --require babel-polyfill --reporter mochawesome --exit",
+    "pretest": "eslint *.js ./api/*.js ./test/*.js"
+
 
 ## API Design
-Describe your web API.
 
+Recipe
 | HTTP Verb & Path |  Description |
 | -- | -- |
-| GET: /api/contacts |return a list of contacts |
-| POST: /api/contacts |add a new contact |
-| PUT: /posts/api/contacts/:id | update a contact |
-| DELETE: /posts/api/contacts/:id | delete a contact |
+| GET: /api/recipies |return a list of recipies |
+| POST: /api/recipies |add a new recipie |
+| PUT: /posts/api/recipies/:id | update a recipie |
+| DELETE: /posts/api/recipies/:id | delete a recipies |
+
+Shopping List
+| HTTP Verb & Path |  Description |
+| -- | -- |
+| GET: /api/shoplist |return a list of shoplist |
+| POST: /api/shoplist |add a new shoplist |
+| PUT: /posts/api/shoplist/:id | update a shoplist |
+| DELETE: /posts/api/shoplist/:id | delete a shoplist |
+
+User
+| HTTP Verb & Path |  Description |
+| -- | -- |
+| GET: /api/users |return a list of shoplist |
+| POST: /api/users |add a new shoplist |
 
 ## API Configuration
 Describe the configuration approach for your endpoint. For example, contents of config file and where it should be located:
@@ -143,25 +167,35 @@ Describe the configuration approach for your endpoint. For example, contents of 
 NODE_ENV=development
 PORT=8080
 HOST=localhost
-mongoDB=YourMongoURL
+mongoDB=mongodb://localhost:27017/entries_db
 seedDb=true
-secret=YourJWTSecret
+secret=ilikecake
 ~~~
 
 ## Security and Authentication
-. . . . Give details of any autentication/security implemented in on the API. Indicate which routes are protected.
+In the app I used JSON Web Tokens for security and authentication. I created a user table and code to implement the api for username and encrypted passwords. I used the 3rd party component install:
+
+npm install --save react-signup-login-component
+
+I integrated the generated view into the app. I tested and confirmed the login and registering functionality worked. I ran into trouble trying to prevent the app showing the other views if the user had not registered and logged in. Given more time I would have fully implemented this.
 
 ## Testing
-. . . . Briefly explain any testing strategy that accompanies the project, including and example report if you have one...
-![][image4]
+I used mocha test suite to implement two test classes for user and recipe (/src/server/test). I ran into difficulty getting the recipe test fully functionable. Test results were generated to:
+
+/src/server/mochawesome-report
+
+![][image4](testing.png)
 
 ## Extra features
 
-. . . . . Briefly explain any non-standard features, functional or non-functional (e.g. user registration, authentication) developed for the app . . . . . .  
++ User registration/login
++ Comments page
++ React/Axios implementation
++ API Testing
 
 ## Independent learning.
 
-. . . . . State the non-standard aspects of React/Express/Node (or other related technologies) that you researched and applied in this assignment . . . . .  
+As part of this project I had again a steep learning curve in the various aspects of react, expres, node and JSON. I ran into alot of difficulty around CORS while testing my api. I did alot of reading of this issue and ultimately figured out I needed to install a NPM package to resolve. There were various other issues that seem trivial looking back but consumed alot of time to resolve. I have learned a great deal in the process of developing this application and take great pride in the end result.
 
 
 
